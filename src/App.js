@@ -1,33 +1,15 @@
 import './App.css';
-import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useQuery } from 'react-query';
 
 function App() {
-  const [data, setData] = useState();
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    setLoading(true);
-    axios
-      .get('/api/getTest')
-      .then(function (response) {
-        // handle success
-        console.log(response);
-        setData(response.data);
-        setLoading(false);
-      })
-      .catch(function (error) {
-        // handle error
-        console.log(error);
-      })
-      .then(function () {
-        // always executed
-      });
-  }, []);
+  const { isLoading, error, data, isFetching } = useQuery('getTest', () =>
+    axios.get('/api/getTest').then((res) => res.data)
+  );
   return (
     <div className="App">
       <div>{data && data}</div>
-      <div>{loading && 'Loading...'}</div>
+      <div>{isLoading && 'Loading...'}~</div>
     </div>
   );
 }
