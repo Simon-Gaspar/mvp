@@ -1,0 +1,36 @@
+.star {
+  color: whitesmoke;
+  display: inline-block;
+  font-size: 20px;
+  line-height: 1;
+  position: relative;
+}
+
+.star:after {
+  color: #a6c4b1;
+  content: '★';
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+}
+
+.star.zero-star:after {
+  width: 0%;
+}
+
+.star.quarter-star:after {
+  width: 30%;
+}
+
+.star.half-star:after {
+  width: 50%;
+}
+
+.star.three-quarter-star:after {
+  width: 69%;
+}
+
+.star.full-star:after {
+  width: 100%;
+}
