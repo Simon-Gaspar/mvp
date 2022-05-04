@@ -1,8 +1,6 @@
 import React from 'react';
 import './FilterBar.css';
 import { Button, Select, TextInput } from '@mantine/core';
-
-const Database = '1';
 class FilterBar extends React.Component {
   // searchNearby
   constructor(props) {
@@ -118,7 +116,3 @@ class FilterBar extends React.Component {
 }
 
 export default FilterBar;
-
-// <Button onClick={this.submitForm} loading loaderPosition="right">
-// Let's Eat
-// </Button>
