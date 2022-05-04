@@ -7,9 +7,10 @@
   width: 100vw;
   background-color: #282c34;
   border: 1px;
-  border-color: #a6c4b1;
+  border-color: #7d9c88;
   border-style: solid;
   font-weight: bold;
+  background-color: #7d9c88;
 }
 
 .nav-button {

@@ -1,6 +1,8 @@
 import React from 'react';
 import './LeftColumn.css';
+import { Button, Select, TextInput } from '@mantine/core';
 
+const Database = '1';
 class LeftColumn extends React.Component {
   // searchNearby
   constructor(props) {
@@ -27,36 +29,49 @@ class LeftColumn extends React.Component {
   }
 
   render() {
+    const cuisine = [
+      'African',
+      'American',
+      'Barbecue',
+      'Chinese',
+      'Crawfish',
+      'French',
+      'Hamburger',
+      'Italian',
+      'Japanese',
+      'Mediterranean',
+      'Mexican',
+      'Middle Eastern',
+      'Pizza',
+      'Seafood',
+      'Spanish',
+      'Steak',
+      'Sushi',
+      'Thai',
+    ];
     return (
       <div className="left-column">
         <h2>Filters: </h2>
-        <div className="label">
-          <label>Location: </label>
-          <input type="text" id="location" onChange={this.handleChange}></input>
+        <div className="zip label">
+          <TextInput
+            label="Location: "
+            variant="filled"
+            placeholder="Your Zip Code"
+            radius="md"
+            size="xs"
+            onChange={this.handleChange}
+          />
         </div>
 
         <div className="label">
-          <label>Cuisine: </label>
-          <select onChange={this.handleChange} id="cuisine">
-            <option value="African">African</option>
-            <option value="American">American</option>
-            <option value="Barbecue">Barbecue</option>
-            <option value="Chinese">Chinese</option>
-            <option value="Crawfish">Crawfish</option>
-            <option value="French">French</option>
-            <option value="Hamburger">Hamburger</option>
-            <option value="Italian">Italian</option>
-            <option value="Japanese">Japanese</option>
-            <option value="Mediterranean">Mediterranean</option>
-            <option value="Mexican">Mexican</option>
-            <option value="Middle Eastern">Middle Eastern</option>
-            <option value="Pizza">Pizza</option>
-            <option value="Seafood">Seafood</option>
-            <option value="Spanish">Spanish</option>
-            <option value="Steak">Steak</option>
-            <option value="Sushi">Sushi</option>
-            <option value="Thai">Thai</option>
-          </select>
+          <Select
+            label="Cuisine"
+            placeholder="Pick one"
+            searchable
+            nothingFound="No options"
+            maxDropdownHeight={280}
+            data={cuisine}
+          />
         </div>
 
         <div className="label">
@@ -96,7 +111,13 @@ class LeftColumn extends React.Component {
           </select>
         </div>
 
-        <button onClick={this.submitForm}>Let's Eat</button>
+        {/* <Button onClick={this.submitForm} loading loaderPosition="right">
+          Let's Eat
+        </Button> */}
+
+        <Button compact className="button" onClick={this.submitForm}>
+          Let's Eat
+        </Button>
       </div>
     );
   }

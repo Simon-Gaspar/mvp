@@ -1,5 +1,68 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
+    'Open Sans', 'Helvetica Neue', sans-serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+#root {
+  background-color: #282c34;
+  min-height: 100%;
+}
+
+main {
+  max-width: 1240px;
+  padding: 16px;
+  margin: auto;
+  margin-top: 86px;
+  height: 100%;
+}
+
 .App {
   color: white;
+  background-color: #282c34;
   font-family: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Open Sans', 'Helvetica Neue';
   height: 100vh;
   width: 100vw;
@@ -9,12 +72,19 @@
   height: 4vh;
   width: 100vw;
   margin-bottom: 5px;
+  background-color: #282c34;
 }
 
 .app-body {
-  display: grid;
-  grid-template-columns: 1.5fr 6fr;
-  gap: 4px;
-  grid-auto-columns: minmax(20vw, 100%);
-  grid-auto-rows: minmax(96vh, 100%);
+  display: flex;
+  flex-direction: column;
+}
+
+.button {
+  background-color: #7d9c88;
+}
+
+.button:hover {
+  background-color: #7d9c88;
+  filter: brightness(80%);
 }

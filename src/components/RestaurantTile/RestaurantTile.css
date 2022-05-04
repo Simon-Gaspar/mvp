@@ -1,18 +1,17 @@
 .restaurant-tile {
   border: 1px;
-  border-color: #a6c4b1;
+  border-color: #7d9c88;
   border-style: solid;
   display: flex;
   flex-direction: column;
   padding: 2% 2%;
+  border-radius: 25px;
+  margin: 2px 0px;
 }
 
 .tile {
-  border: 1px;
-  border-color: #a6c4b1;
-  border-style: solid;
   display: flex;
-  padding: 2% 2%;
+  padding: 2px 0%;
   align-items: center;
   flex-wrap: nowrap;
 }
