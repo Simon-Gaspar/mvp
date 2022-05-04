@@ -1,6 +1,6 @@
 import React from 'react';
-import StarRating from './StarRating/StarRating.jsx';
-import PriceRating from './PriceRating/PriceRating.jsx';
+import StarRating from '../StarRating/StarRating.jsx';
+import PriceRating from '../PriceRating/PriceRating.jsx';
 
 import './RestaurantTile.css';
 

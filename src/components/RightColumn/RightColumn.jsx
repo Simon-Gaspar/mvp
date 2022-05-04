@@ -3,7 +3,7 @@ import './RightColumn.css';
 // import axios from 'axios';
 // import { useQuery } from 'react-query';
 
-import RestaurantTile from './RestaurantTile.jsx';
+import RestaurantTile from '../RestaurantTile/RestaurantTile.jsx';
 
 function RightColumn() {
   // const { isLoading, error, data } = useQuery('getPlace', () =>
