@@ -2,7 +2,7 @@ import './App.css';
 // import axios from 'axios';
 // import { useQuery } from 'react-query';
 import Navbar from './components/Navbar/Navbar.jsx';
-import LeftColumn from './components/LeftColumn/LeftColumn.jsx';
+import FilterBar from './components/FilterBar/FilterBar.jsx';
 import RightColumn from './components/RightColumn/RightColumn.jsx';
 //searchNearby={searchNearby}
 
@@ -13,7 +13,7 @@ function App() {
         <Navbar />
       </div>
       <div className="app-body">
-        <LeftColumn className="app-left-column" />
+        <FilterBar className="app-left-column" />
         <RightColumn className="app-right-column" />
       </div>
     </div>
