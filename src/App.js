@@ -3,7 +3,7 @@ import './App.css';
 // import { useQuery } from 'react-query';
 import Navbar from './components/Navbar/Navbar.jsx';
 import FilterBar from './components/FilterBar/FilterBar.jsx';
-import RightColumn from './components/RightColumn/RightColumn.jsx';
+import RestaurantList from './components/RestaurantList/RestaurantList.jsx';
 //searchNearby={searchNearby}
 
 function App() {
@@ -14,7 +14,7 @@ function App() {
       </div>
       <div className="app-body">
         <FilterBar className="app-left-column" />
-        <RightColumn className="app-right-column" />
+        <RestaurantList className="app-right-column" />
       </div>
     </div>
   );
