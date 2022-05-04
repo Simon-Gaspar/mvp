@@ -1,0 +1,9 @@
+.right-column {
+  background-color: #282c34;
+  border: 2px;
+  border-color: #a6c4b1;
+  border-style: solid;
+  display: flex;
+  flex-direction: column;
+  padding: 0% 2%;
+}

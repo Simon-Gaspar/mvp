@@ -1,0 +1,36 @@
+.price {
+  color: whitesmoke;
+  display: inline-block;
+  font-size: 20px;
+  line-height: 1;
+  position: relative;
+}
+
+.price:after {
+  color: #a6c4b1;
+  content: '$';
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+}
+
+.price.zero-price:after {
+  width: 0%;
+}
+
+.price.quarter-price:after {
+  width: 30%;
+}
+
+.price.half-price:after {
+  width: 50%;
+}
+
+.price.three-quarter-price:after {
+  width: 69%;
+}
+
+.price.full-price:after {
+  width: 100%;
+}
