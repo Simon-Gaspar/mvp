@@ -46,6 +46,7 @@ function FilterBar() {
     },
     {
       enabled: false,
+      retry: false,
     }
   );
   console.log('data: ', data);
