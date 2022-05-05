@@ -4,7 +4,7 @@ import PriceRating from '../PriceRating/PriceRating.jsx';
 
 import './RestaurantTile.css';
 
-function RestaurantTile(restaurant) {
+function RestaurantTile({ restaurant }) {
   const {
     name = 'Judice Inn (Default)',
     price_level = 1,

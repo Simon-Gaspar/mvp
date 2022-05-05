@@ -1,27 +1,87 @@
+import axios from 'axios';
+import React, { useEffect } from 'react';
+import { useQuery } from 'react-query';
+
 import { Button, Select, TextInput } from '@mantine/core';
 import { useForm } from '@mantine/form';
 
-import React from 'react';
-import { useStore } from '../../store.js';
 import './FilterBar.css';
+
+import { useStore } from '../../store.js';
+
+const getNearbyPlaces = ({ cuisine, location, maxPrice, openNow, radius, rating, reviews }) => {
+  return axios
+    .get('/api/searchNearby', {
+      params: { cuisine, location, maxPrice, openNow, radius, rating, reviews },
+    })
+    .then((res) => res.data);
+};
 
 function FilterBar() {
   const setLocation = useStore((state) => state.setLocation);
+  const location = useStore((state) => state.location);
+
   const setRating = useStore((state) => state.setRating);
+  const rating = useStore((state) => state.rating);
+
   const setReviews = useStore((state) => state.setReviews);
+  const reviews = useStore((state) => state.reviews);
+
   const setCuisine = useStore((state) => state.setCuisine);
+  const cuisine = useStore((state) => state.cuisine);
+
   const setMaxPrice = useStore((state) => state.setMaxPrice);
+  const maxPrice = useStore((state) => state.maxPrice);
+
   const setOpenNow = useStore((state) => state.setOpenNow);
+  const openNow = useStore((state) => state.openNow);
+
   const setRadius = useStore((state) => state.setRadius);
+  const radius = useStore((state) => state.radius);
+
+  const setError = useStore((state) => state.setError);
+
+  const setFilteredResults = useStore((state) => state.setFilteredResults);
+
   const form = useForm({
-    // initialValues: {
-    //   email: '',
-    //   termsOfService: false,
-    // },
-    // validate: {
-    //   email: (value) => (/^\S+@\S+$/.test(value) ? null : 'Invalid email'),
-    // },
+    initialValues: {
+      location: '',
+    },
+    validate: {
+      location: (value) => (/^\d{5}$/.test(value) ? null : 'Invalid zip code'),
+    },
   });
+
+  const {
+    data,
+    error,
+    isLoading,
+    refetch: searchNearbyRefetch,
+    isError,
+    isFetched,
+  } = useQuery(
+    'searchNearby',
+    () => getNearbyPlaces({ cuisine, location, maxPrice, openNow, radius, rating, reviews }),
+    {
+      enabled: false,
+    }
+  );
+  console.log('isError: ', isError);
+  console.log('isFetched: ', isFetched);
+
+  console.log('data: ', data);
+
+  useEffect(() => {
+    if (data?.length) {
+      setFilteredResults(data);
+    }
+  }, [data, setFilteredResults]);
+
+  useEffect(() => {
+    if (isError) {
+      setError(true);
+    }
+  }, [isError, setError]);
 
   const cuisineList = [
     'African',
@@ -46,7 +106,12 @@ function FilterBar() {
 
   return (
     <div className="filter-bar">
-      <form onSubmit={form.onSubmit((values) => console.log(values))}>
+      <form
+        onSubmit={form.onSubmit((values) => {
+          console.log(values);
+          searchNearbyRefetch();
+        })}
+      >
         <TextInput
           className="label"
           id="location"
@@ -56,6 +121,7 @@ function FilterBar() {
           placeholder="Insert Zip Code"
           required
           onChange={(event) => setLocation(event.target.value)}
+          {...form.getInputProps('location')}
         />
 
         <Select
@@ -128,7 +194,12 @@ function FilterBar() {
           data={['Any', 'Yes', 'No']}
         />
 
-        <Button className="label eat-button button" type="submit">
+        <Button
+          className="label eat-button button"
+          type="submit"
+          loading={isLoading}
+          loaderPosition="right"
+        >
           Let's Eat
         </Button>
       </form>
