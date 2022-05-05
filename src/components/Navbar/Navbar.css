@@ -3,8 +3,8 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-evenly;
-  height: 4vh;
   width: 100vw;
+  height: 100px;
   background-color: #282c34;
   border: 1px;
   border-color: #7d9c88;
@@ -23,8 +23,7 @@
 }
 
 .logo {
-  max-width: 90%;
-  max-height: 90%;
+  width: 60px;
 }
 
 #logo {

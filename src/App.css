@@ -11,6 +11,12 @@
 html,
 body {
   height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  margin: 0;
 }
 
 body {
@@ -47,11 +53,6 @@ h6 {
   overflow-wrap: break-word;
 }
 
-#root {
-  background-color: #282c34;
-  min-height: 100%;
-}
-
 main {
   max-width: 1240px;
   padding: 16px;
@@ -64,12 +65,12 @@ main {
   color: white;
   background-color: #282c34;
   font-family: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Open Sans', 'Helvetica Neue';
-  height: 100vh;
+  height: 100%;
   width: 100vw;
 }
 
 .app-header {
-  height: 4vh;
+  height: 15vh;
   width: 100vw;
   margin-bottom: 5px;
   background-color: #282c34;
@@ -78,6 +79,8 @@ main {
 .app-body {
   display: flex;
   flex-direction: column;
+  height: 100%;
+  background-color: #282c34;
 }
 
 .button {

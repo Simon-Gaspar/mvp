@@ -1,35 +1,60 @@
-import { google } from 'googleapis';
+require('dotenv').config();
+const axios = require('axios').default;
+const key = process.env.KEY;
+const meter = 1609.34;
 
 exports.handler = async function (event, context) {
-  // your server-side functionality
+  try {
+    console.log('queryStringParameters: ', event.queryStringParameters);
+    const {
+      cuisine = '',
+      location = 78735,
+      maxPrice = 4,
+      openNow,
+      radius,
+      rating = 4.0,
+      reviews = 100,
+    } = event.queryStringParameters;
+    const { data: locationResponse } = await axios.get(
+      `https://maps.googleapis.com/maps/api/geocode/json?key=${key}&address=${location}`
+    );
+    const { lat, lng } = locationResponse.results[0].geometry.location;
+    const latlng = `${lat},${lng}`;
+    const encodedLocation = encodeURIComponent(latlng);
+    const { data } = await axios.get(
+      `https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=${key}&location=${encodedLocation}&maxprice=${maxPrice}&radius=${
+        radius ? meter * radius : meter * 5
+      }&keyword=restaurant
+      ${cuisine && ` ${cuisine}`}
+      ${openNow && `&opennow=true`}`
+    );
 
-  var map;
-  var service;
-
-  function initMap() {
-    var sydney = new google.maps.LatLng(-33.867, 151.195);
-
-    map = new google.maps.Map(document.getElementById('map'), { center: sydney, zoom: 15 });
-
-    var request = {
-      query: 'Museum of Contemporary Art Australia',
-      fields: ['name', 'geometry'],
-    };
-
-    var service = new google.maps.places.PlacesService(map);
-
-    service.findPlaceFromQuery(request, function (results, status) {
-      if (status === google.maps.places.PlacesServiceStatus.OK) {
-        for (var i = 0; i < results.length; i++) {
-          createMarker(results[i]);
+    const filteredResults = data.results
+      .map((place) => {
+        return {
+          name: place.name,
+          opening_hours: {
+            open_now: place.opening_hours.open_now,
+          },
+          price_level: place.price_level,
+          rating: place.rating,
+          user_ratings_total: place.user_ratings_total,
+        };
+      })
+      .filter((place) => {
+        if (place.rating >= rating && place.user_ratings_total >= reviews) {
+          return true;
         }
-        map.setCenter(results[0].geometry.location);
-      }
-    });
-
+        return false;
+      });
     return {
       statusCode: 200,
-      body: 'success',
+      body: JSON.stringify(filteredResults),
+    };
+  } catch {
+    return {
+      statusCode: 500,
+      body: JSON.stringify([]),
     };
   }
 };
