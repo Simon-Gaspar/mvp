@@ -1,14 +1,23 @@
 import React from 'react';
-import './RightColumn.css';
+import './RestaurantList.css';
 // import axios from 'axios';
 // import { useQuery } from 'react-query';
-
+import { useStore } from '../../store.js';
 import RestaurantTile from '../RestaurantTile/RestaurantTile.jsx';
 
-function RightColumn() {
+function RestaurantList() {
+  const location = useStore((state) => state.location);
   // const { isLoading, error, data } = useQuery('getPlace', () =>
   //   axios.get('/api/getPlace').then((res) => res.data)
   // );
+
+  //   export function MyComponent(props) {
+  //     const [myState, setMystate] = useState('initialState')
+
+  //     useEffect(() => {
+  //         console.log(myState, '- Has changed')
+  //     },[myState]) // <-- here put the parameter to listen
+  // }
 
   const ex = {
     name: 'China Dynasty',
@@ -19,16 +28,11 @@ function RightColumn() {
     rating: 4.2,
     user_ratings_total: 355,
   };
-
   const data = [ex, ex, ex];
 
   return (
     <>
-      <div className="right-column">
-        {/* <div>{data && data}</div> */}
-        {/* <div>{isLoading && 'Loading...'}</div>
-        <div>{error && error}</div> */}
-
+      <div className="restaurant-list">
         {data.map((restaurant, index) => (
           <RestaurantTile restaurant={restaurant} key={index + 1000} />
         ))}
@@ -37,4 +41,8 @@ function RightColumn() {
   );
 }
 
-export default RightColumn;
+export default RestaurantList;
+
+// {/* <div>{data && data}</div> */}
+// {/* <div>{isLoading && 'Loading...'}</div>
+// <div>{error && error}</div> */}

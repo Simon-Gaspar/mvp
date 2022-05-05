@@ -29,7 +29,7 @@ exports.handler = async function (event, context) {
         map.setCenter(results[0].geometry.location);
       }
     });
-    
+
     return {
       statusCode: 200,
       body: 'success',

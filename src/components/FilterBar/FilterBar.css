@@ -1,13 +1,9 @@
 .filter-bar {
   background-color: #282c34;
-  display: flex;
-  padding: 1% 2%;
-}
-
-.label {
-  display: grid;
-  align-content: center;
-  padding: 0% 1%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1% 1%;
 }
 
 .mantine-Select-label {
@@ -21,4 +17,13 @@
 .eat-button {
   display: inline-block;
   align-self: flex-end;
+}
+
+form {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(20vw, max-content));
+  width: 90vw;
+  grid-gap: 1px;
+  align-content: center;
+  justify-content: space-around;
 }
