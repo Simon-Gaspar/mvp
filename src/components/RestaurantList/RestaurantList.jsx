@@ -4,6 +4,7 @@ import './RestaurantList.css';
 import { useStore } from '../../store.js';
 import RestaurantTile from '../RestaurantTile/RestaurantTile.jsx';
 import Error from '../Error/Error.jsx';
+import EmptyState from '../EmptyState/EmptyState.jsx';
 
 function RestaurantList() {
   const restaurants = useStore((state) => state.filteredResults);
@@ -11,6 +12,10 @@ function RestaurantList() {
   if (error) {
     return <Error />;
   }
+  if (restaurants?.length === 0) {
+    return <EmptyState />;
+  }
+
   return (
     <div className="restaurant-list">
       {restaurants.map((restaurant, index) => (
@@ -21,7 +26,3 @@ function RestaurantList() {
 }
 
 export default RestaurantList;
-
-// {/* <div>{data && data}</div> */}
-// {/* <div>{isLoading && 'Loading...'}</div>
-// <div>{error && error}</div> */}

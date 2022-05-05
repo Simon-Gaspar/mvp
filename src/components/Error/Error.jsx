@@ -2,7 +2,7 @@ import React from 'react';
 
 import './Error.css';
 
-function Error({ restaurant }) {
+function Error() {
   return (
     <div className="error-tile">
       <h2> ⚠ </h2>

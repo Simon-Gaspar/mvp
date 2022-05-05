@@ -5,14 +5,7 @@ import PriceRating from '../PriceRating/PriceRating.jsx';
 import './RestaurantTile.css';
 
 function RestaurantTile({ restaurant }) {
-  const {
-    name = 'Judice Inn (Default)',
-    price_level = 1,
-    rating = 5,
-    user_ratings_total = 1000,
-    opening_hours = { open_now: true },
-    vicinity = 'Lafayette, LA',
-  } = restaurant;
+  const { name, price_level, rating, user_ratings_total, opening_hours } = restaurant;
   const open = opening_hours.open_now ? 'Yes' : 'No';
 
   return (
@@ -32,8 +25,6 @@ function RestaurantTile({ restaurant }) {
       </div>
 
       <div className="tile open-now">Open Now: &nbsp; {open}</div>
-
-      <div className="tile location">Location: &nbsp; {vicinity}</div>
     </div>
   );
 }
