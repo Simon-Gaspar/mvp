@@ -1,4 +1,4 @@
-import { Button, Select, TextInput, Group, Box, Checkbox } from '@mantine/core';
+import { Button, Select, TextInput } from '@mantine/core';
 import { useForm } from '@mantine/form';
 
 import React from 'react';
