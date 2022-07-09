@@ -7,8 +7,6 @@
   <a href="https://www.mvp.alexabushanab.com/">
     <img src="public/4stars.png" alt="Logo">
   </a>
-  
-
 
 <h3 align="center">4 stars</h3>
 
@@ -26,10 +24,7 @@ A single page react app that uses the google maps API to help you find and filte
 
 #### Built With
 
-- [![React][react-badge]][react-url]
-- [![SASS][sass-badge]][sass-url]
-- [![Netlify][netlify-badge]][netlify-url]
-- [![Javascript][javascript-badge]][javascript-url]
+[![React][react-badge]][react-url] [![SASS][sass-badge]][sass-url] [![Netlify][netlify-badge]][netlify-url] [![Javascript][javascript-badge]][javascript-url] ![React Query](https://img.shields.io/badge/-React%20Query-FF4154?style=for-the-badge&logo=react%20query&logoColor=white) ![React](https://img.shields.io/badge/zustand-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 
 #### Contact Me
 
