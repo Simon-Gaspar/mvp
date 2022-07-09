@@ -7,6 +7,8 @@
   <a href="https://www.mvp.alexabushanab.com/">
     <img src="public/4stars.png" alt="Logo">
   </a>
+  
+
 
 <h3 align="center">4 stars</h3>
 
@@ -18,7 +20,7 @@ A single page react app that uses the google maps API to help you find and filte
 </div>
 
 <div align="center">
-<img  src="public/4stars.png">
+<img  src="https://user-images.githubusercontent.com/38299309/178093351-b67300f5-2225-4625-901f-b666bb256b61.gif">
 </img>
 </div>
 
